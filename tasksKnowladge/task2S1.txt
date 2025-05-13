@@ -1,0 +1,17 @@
+         CLIPS (6.30 3/17/15)
+CLIPS> (defrule pos-int
+?fact <- (number ?x)
+(test (integerp ?x))
+(test (> ?x 0))
+=>
+(printout t "The number is a positive integer" crlf))
+CLIPS> (assert (number 5)) 
+<Fact-1>
+CLIPS> (assert (number -3))
+<Fact-2>
+CLIPS> (assert (number 2.5)) 
+<Fact-3>
+CLIPS> (run)
+The number is a positive integer
+CLIPS> (run)
+CLIPS> 

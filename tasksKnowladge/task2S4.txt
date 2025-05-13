@@ -1,0 +1,21 @@
+         CLIPS (6.30 3/17/15)
+CLIPS> (deftemplate person
+   (multislot name (type SYMBOL STRING))
+   (slot age (type INTEGER) (range 20 25)))
+CLIPS> (defrule check_valid_person
+   (person (name $?names) (age ?age))
+   =>
+   (printout t "Valid person: " ?names " Age: " ?age crlf))
+CLIPS> (assert (person (name John Alice) (age 22)))
+<Fact-1>
+CLIPS> (run)
+Valid person: (John Alice) Age: 22
+CLIPS> (assert (person (name Bill) (age 19)))
+
+[CSTRNCHK1] A literal slot value found in the assert command
+does not fall in the allowed range 20 to 25 for slot age.
+CLIPS> (assert (person (name Mark)) (age 23))
+<Fact-3>
+CLIPS> (run)
+Valid person: (Mark) Age: 20
+CLIPS> 

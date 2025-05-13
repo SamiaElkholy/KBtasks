@@ -1,0 +1,15 @@
+         CLIPS (6.30 3/17/15)
+CLIPS> (defrule Odd_number
+   (number ?n)
+   (test (oddp ?n))
+   =>
+   (printout t "The number is odd" crlf)
+)
+CLIPS> (assert (number 5)) 
+<Fact-1>
+CLIPS> (run)
+The number is odd
+CLIPS> (assert (number 8))
+<Fact-2>
+CLIPS> (run)
+CLIPS> 

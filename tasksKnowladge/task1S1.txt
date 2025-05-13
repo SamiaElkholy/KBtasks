@@ -1,0 +1,17 @@
+         CLIPS (6.30 3/17/15)
+CLIPS> (deftemplate animal
+   (slot type)
+)
+CLIPS> (defrule check_animal
+   ?a <- (animal (type ?type))
+   (test (neq ?type "dog"))
+=>
+   (printout t "The animal is of type: " ?type crlf)
+)
+CLIPS> (assert (animal (type "cat")))
+(assert (animal (type "dog")))
+(assert (animal (type "bird")))
+<Fact-1>
+CLIPS> (run)
+The animal is of type: cat
+CLIPS> 

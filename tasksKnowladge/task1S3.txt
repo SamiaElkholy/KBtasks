@@ -1,0 +1,15 @@
+         CLIPS (6.30 3/17/15)
+CLIPS> (defrule check_animal
+   (animal ?a)
+   (test (not (or (eq ?a dog) (eq ?a cat))))
+   =>
+   (printout t "The animal is not a dog or a cat: " ?a crlf)
+)
+CLIPS> (assert (animal dog))
+<Fact-1>
+CLIPS> (run)
+CLIPS> (assert (animal elephant))
+<Fact-2>
+CLIPS> (run)
+The animal is not a dog or a cat: elephant
+CLIPS> 

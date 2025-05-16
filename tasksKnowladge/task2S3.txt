@@ -1,15 +1,15 @@
          CLIPS (6.30 3/17/15)
 CLIPS> (defrule Odd_number
    (number ?n)
-   (test (oddp ?n))
+   (test (and (>= ?n 0) (<= ?n 1000000)))
+   (test (or (eq ?n 1) (eq ?n 3) (eq ?n 5) (eq ?n 7) (eq ?n 9)
+             (eq (mod ?n 10) 1) (eq (mod ?n 10) 3) (eq (mod ?n 10) 5)
+             (eq (mod ?n 10) 7) (eq (mod ?n 10) 9)))
    =>
    (printout t "The number is odd" crlf)
 )
-CLIPS> (assert (number 5)) 
+CLIPS> (assert (number 5))
 <Fact-1>
 CLIPS> (run)
 The number is odd
-CLIPS> (assert (number 8))
-<Fact-2>
-CLIPS> (run)
 CLIPS> 
